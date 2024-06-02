@@ -1,3 +1,5 @@
+import ThemeContext from '../../context/ThemeContext'
+
 import {
   FailureContainer,
   FailedImage,
@@ -7,27 +9,41 @@ import {
 } from './styledComponents'
 
 const FailureView = props => {
-  const {getVideosData} = props
+  const {retryOption} = props
+
+  const onClickRetryBtn = () => {
+    retryOption()
+  }
 
   return (
-    <FailureContainer>
-      <FailedImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
-        alt="failure status"
-      />
-      <Heading>Oops! Something Went Wrong</Heading>
-      <Paragraph>
-        We are having some trouble to complete your request. Please try again.
-      </Paragraph>
-      <Button
-        onClick={getVideosData}
-        type="button"
-        color="#ffffff"
-        backgroundColor="#4f46e5"
-      >
-        Retry
-      </Button>
-    </FailureContainer>
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+        const textColor = isDarkTheme ? '#ffffff' : '#000000'
+
+        return (
+          <FailureContainer bgColor={bgColor}>
+            <FailedImage
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
+              alt="failure status"
+            />
+            <Heading textColor={textColor}>Oops! Something Went Wrong</Heading>
+            <Paragraph textColor={textColor}>
+              We are having some trouble to complete your request. Please try
+              again.
+            </Paragraph>
+            <Button
+              onClick={onClickRetryBtn}
+              type="button"
+              textColor={textColor}
+            >
+              Retry
+            </Button>
+          </FailureContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
   )
 }
 

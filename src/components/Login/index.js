@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
+import ThemeContext from '../../context/ThemeContext'
 
 import {
   LoginContainer,
@@ -66,6 +67,12 @@ class Login extends Component {
     })
   }
 
+  onShowHidePassword = () => {
+    this.setState(prevState => ({
+      hideAndShowPassword: !prevState.hideAndShowPassword,
+    }))
+  }
+
   render() {
     const {usernameInput, passwordInput} = this.state
     const {errorMessage, showError, hideAndShowPassword} = this.state
@@ -74,42 +81,60 @@ class Login extends Component {
       return <Redirect to="/" />
     }
     return (
-      <LoginContainer>
-        <FormEl onSubmit={this.onSubmitForm}>
-          <Image
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-            alt="website logo"
-          />
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
 
-          <Label htmlFor="usernameId">USERNAME</Label>
-          <InputField
-            type="text"
-            id="usernameId"
-            placeHolder="Username"
-            value={usernameInput}
-            onChange={this.onChangeUsername}
-          />
-          <Label htmlFor="passwordId">PASSWORD</Label>
-          <InputField
-            type={hideAndShowPassword ? 'text' : 'password'}
-            id="passwordId"
-            placeHolder="Password"
-            value={passwordInput}
-            onChange={this.onChangePassword}
-          />
-          <CSPContainer>
-            <CheckBox
-              id="showPasswordId"
-              type="checkbox"
-              checked={hideAndShowPassword}
-              onChange={this.onShowHidePassword}
-            />
-            <Label2 htmlFor="showPasswordId">Show Password</Label2>
-          </CSPContainer>
-          <Button type="submit">Login</Button>
-          {showError && <Paragraph>*{errorMessage}</Paragraph>}
-        </FormEl>
-      </LoginContainer>
+          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const textColor = isDarkTheme ? '#ffffff' : '#000000'
+
+          return (
+            <LoginContainer bgColor={bgColor}>
+              <FormEl onSubmit={this.onSubmitForm} bgColor={isDarkTheme}>
+                <Image
+                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                  alt="website logo"
+                />
+
+                <Label htmlFor="usernameId" textColor={textColor}>
+                  USERNAME
+                </Label>
+                <InputField
+                  type="text"
+                  id="usernameId"
+                  placeHolder="USERNAME"
+                  value={usernameInput}
+                  onChange={this.onChangeUsername}
+                />
+                <Label htmlFor="passwordId" textColor={textColor}>
+                  PASSWORD
+                </Label>
+                <InputField
+                  type={hideAndShowPassword ? 'text' : 'password'}
+                  id="passwordId"
+                  placeHolder="PASSWORD"
+                  value={passwordInput}
+                  onChange={this.onChangePassword}
+                />
+
+                <CSPContainer bgColor={bgColor}>
+                  <CheckBox
+                    id="showPasswordId"
+                    type="checkbox"
+                    checked={hideAndShowPassword}
+                    onChange={this.onShowHidePassword}
+                  />
+                  <Label2 htmlFor="showPasswordId" textColor={textColor}>
+                    Show Password
+                  </Label2>
+                </CSPContainer>
+                <Button type="submit">Login</Button>
+                {showError && <Paragraph>*{errorMessage}</Paragraph>}
+              </FormEl>
+            </LoginContainer>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

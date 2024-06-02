@@ -12,7 +12,7 @@ import ThemeContext from '../../context/ThemeContext'
 
 import {
   HomeContainer,
-  HomeCard,
+  CardContainer,
   PremiumCard,
   Image,
   Paragraph,
@@ -59,7 +59,7 @@ class Home extends Component {
           <PremimumDetails>
             <Image
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-              alt="website logo"
+              alt="nxt watch logo"
             />
             <Paragraph>Buy Nxt Watch Premium prepaid plans with UPI</Paragraph>
             <Button backgroundColor="transparent">GET IT NOW</Button>
@@ -124,12 +124,12 @@ class Home extends Component {
 
   renderLoader = () => <LoaderView />
 
-  renderFailureView = () => <FailureView />
+  renderFailureView = () => <FailureView retryOption={this.getVideosData} />
 
   renderSuccessView = () => {
     const {searchedVideos, searchInput} = this.state
     const searchResults = searchedVideos.filter(eachVideo =>
-      eachVideo.toLowerCase().includes(searchInput.toLowerCase()),
+      eachVideo.title.toLowerCase().includes(searchInput.toLowerCase()),
     )
     const noSearchResultsFound = searchResults.length === 0
     return noSearchResultsFound ? (
@@ -140,7 +140,7 @@ class Home extends Component {
         />
         <Heading>No Search results found</Heading>
         <Paragraph>Try different key words or remove search filter</Paragraph>
-        <Button>Retry</Button>
+        <Button retryButton>Retry</Button>
       </NoSearchResultsFound>
     ) : (
       <UlElement>
@@ -171,14 +171,14 @@ class Home extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
           return (
             <>
               <Header />
               <HomeContainer data-testid="home" bgColor={bgColor}>
                 <LeftColumn onChangeActiveTab={this.onChangeActiveTab} />
-                <HomeCard bgColor={bgColor}>
+                <CardContainer bgColor={bgColor}>
                   {this.renderPremiumCard()}
                   <SearchBox>
                     <SearchInput
@@ -187,12 +187,12 @@ class Home extends Component {
                       onChange={this.onChangeSearch}
                       placeholder="search"
                     />
-                    <BoxSearchIcon>
+                    <BoxSearchIcon type="button" data-testid="searchButton">
                       <IoIosSearch aria-label="close" />
                     </BoxSearchIcon>
                   </SearchBox>
                   {this.renderData()}
-                </HomeCard>
+                </CardContainer>
               </HomeContainer>
             </>
           )

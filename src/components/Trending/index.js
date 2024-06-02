@@ -86,7 +86,7 @@ class Trending extends Component {
     )
   }
 
-  renderFailureView = () => <FailureView />
+  renderFailureView = () => <FailureView retryOption={this.getVideosData} />
 
   renderLoader = () => <LoaderView />
 
@@ -111,17 +111,17 @@ class Trending extends Component {
         {value => {
           const {isDarkTheme} = value
           const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
           return (
             <>
               <Header />
-
               <TrendingContainer bgColor={bgColor}>
                 <LeftColumn />
-                <CardContainer>
-                  <IconAndHeadingCard>
-                    <SiYoutubegaming />
-                    <Heading>Trending</Heading>
+                <CardContainer bgColor={bgColor}>
+                  <IconAndHeadingCard bgColor={bgColor}>
+                    <SiYoutubegaming size={40} color="#ff0b37" />
+                    <Heading textColor={textColor}>Trending</Heading>
                   </IconAndHeadingCard>
                   {this.renderTrendingData()}
                 </CardContainer>

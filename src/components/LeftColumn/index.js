@@ -37,42 +37,47 @@ const LeftColumn = () => (
         activeTabItem('SAVED VIDEOS')
       }
 
-      const bgColor = isDarkTheme ? '#ffffff' : '#000000'
-
-      const textColor = isDarkTheme ? '#000000' : '#ffffff'
+      const textColor = isDarkTheme ? '#ffffff' : '#000000'
+      const bgColor = isDarkTheme ? '#000000' : '#ffffff'
 
       return (
         <LeftColumnContainer bgColor={bgColor}>
-          <TabItemsContainer>
+          <TabItemsContainer bgColor={bgColor}>
             <TabItem
               onClick={onClickHomeTabItem}
-              isActive={activeTab === 'HOME' ? '#f1f5f9' : 'transparent'}
-              bgColor={bgColor}
+              isActive={activeTab === 'HOME' ? '#e2e8f0' : 'transparent'}
             >
-              <Link to="/" color={textColor}>
-                <AiFillHome />
+              <Link to="/" textColor={textColor}>
+                <AiFillHome
+                  size={20}
+                  color={activeTab === 'HOME' ? '#ff0b37' : 'none'}
+                />
                 Home
               </Link>
             </TabItem>
 
             <TabItem
               onClick={onClickTrendingTabItem}
-              isActive={activeTab === 'TRENDING' ? '#f1f5f9' : 'transparent'}
-              bgColor={bgColor}
+              isActive={activeTab === 'TRENDING' ? '#e2e8f0' : 'transparent'}
             >
-              <Link to="/trending" color={textColor}>
-                <AiFillFire />
+              <Link to="/trending" textColor={textColor}>
+                <AiFillFire
+                  size={20}
+                  color={activeTab === 'TRENDING' ? '#ff0b37' : 'none'}
+                />
                 Trending
               </Link>
             </TabItem>
 
             <TabItem
               onClick={onClickGamingTabItem}
-              isActive={activeTab === 'GAMING' ? '#f1f5f9' : 'transparent'}
-              bgColor={bgColor}
+              isActive={activeTab === 'GAMING' ? '#e2e8f0' : 'transparent'}
             >
-              <Link to="/gaming" color={textColor}>
-                <SiYoutubegaming />
+              <Link to="/gaming" textColor={textColor}>
+                <SiYoutubegaming
+                  size={20}
+                  color={activeTab === 'GAMING' ? '#ff0b37' : 'none'}
+                />
                 Gaming
               </Link>
             </TabItem>
@@ -80,22 +85,24 @@ const LeftColumn = () => (
             <TabItem
               onClick={onClickSavedVideosTabItem}
               isActive={
-                activeTab === 'SAVED VIDEOS' ? '#f1f5f9' : 'transparent'
+                activeTab === 'SAVED VIDEOS' ? '#e2e8f0' : 'transparent'
               }
-              bgColor={bgColor}
             >
-              <Link to="/saved-videos" color={textColor}>
-                <MdPlaylistAdd />
+              <Link to="/saved-videos" textColor={textColor}>
+                <MdPlaylistAdd
+                  size={20}
+                  color={activeTab === 'SAVED VIDEOS' ? '#ff0b37' : 'none'}
+                />
                 Saved videos
               </Link>
             </TabItem>
           </TabItemsContainer>
 
           <ContactUsContainer bgColor={bgColor}>
-            <Heading color={textColor}>CONTACT US</Heading>
+            <Heading textColor={textColor}>CONTACT US</Heading>
             <IconsContainer bgColor={bgColor}>
               <Image
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
                 alt="facebook logo"
               />
               <Image
@@ -104,11 +111,11 @@ const LeftColumn = () => (
               />
               <Image
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-                alt="linkedin logo"
+                alt="linked in logo"
               />
             </IconsContainer>
-            <Paragraph color={textColor}>
-              Enjoy!Now to see your channels and recommendations
+            <Paragraph textColor={textColor}>
+              Enjoy! Now to see your channels and recommendations!
             </Paragraph>
           </ContactUsContainer>
         </LeftColumnContainer>

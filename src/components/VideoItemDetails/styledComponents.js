@@ -1,16 +1,23 @@
 import styled from 'styled-components'
 
 export const VideoItemDetailsContainer = styled.div`
-  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  min-height: 90vh;
+  background-color: ${props => props.bgColor};
 `
 
 export const CardContainer = styled.div`
-  width: 90%;
+  padding: 10px;
+  width: 80%;
+  background-color: ${props => props.bgColor};
 `
+
 export const VideoInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
+  background-color: ${props => props.bgColor};
 `
 
 export const ImageVideo = styled.img`
@@ -20,16 +27,18 @@ export const ImageVideo = styled.img`
 
 export const VideoInfoCard = styled.div`
   margin-top: 50px;
+  background-color: ${props => props.bgColor};
 `
 
 export const Heading = styled.h1`
-  color: #000000;
+  color: ${props => props.textColor};
   font-size: 40px;
   font-weight: normal;
   font-family: Roboto;
 `
 
 export const ViewsAndLikesCard = styled.div`
+  color: ${props => props.textColor};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -39,10 +48,11 @@ export const ViewsAndLikesCard = styled.div`
 export const ViewsCard = styled.div`
   display: flex;
   flex-direction: row;
+  background-color: ${props => props.bgColor};
 `
 
 export const Paragraph = styled.p`
-  color: #000000;
+  color: ${props => props.textColor};
   font-size: 20px;
   font-weight: normal;
   font-family: Roboto;
@@ -51,11 +61,13 @@ export const Paragraph = styled.p`
 export const LikesCard = styled.div`
   display: flex;
   flex-direction: row;
+  background-color: ${props => props.bgColor};
 `
 
 export const ChannelLogoAndDetailsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  background-color: ${props => props.bgColor};
 `
 
 export const Image = styled.img`
@@ -68,6 +80,7 @@ export const Image = styled.img`
 export const ChannelCard = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => props.bgColor};
 `
 
 export const Button = styled.button`

@@ -17,12 +17,12 @@ const Video = props => {
   const {
     id,
     title,
-    thumbnailUrl,
+    thumbnailURL,
     channel,
     viewCount,
     publishedAt,
   } = detailsOfVideo
-  const {name, profileImageUrl} = channel
+  const {name, profileImageURL} = channel
 
   return (
     <ThemeContext.Consumer>
@@ -34,15 +34,17 @@ const Video = props => {
         return (
           <Link to={`/videos/${id}`}>
             <VideoContainer bgColor={bgColor}>
-              <Image src={thumbnailUrl} alt="thumbnail_url" />
-              <ChannelDetails>
-                <ProfileImage src={profileImageUrl} alt={name} />
-                <VideoCard>
-                  <Heading color={textColor}>{title}</Heading>
-                  <Paragraph>{name}</Paragraph>
+              <Image src={thumbnailURL} alt="video thumbnail" />
+              <ChannelDetails bgColor={bgColor}>
+                <ProfileImage src={profileImageURL} alt="channel logo" />
+                <VideoCard bgColor={bgColor}>
+                  <Heading textColor={textColor}>{title}</Heading>
+                  <Paragraph textColor={textColor}>{name}</Paragraph>
                   <ViewsAndDateContainer>
-                    <Paragraph color={textColor}>{viewCount} views</Paragraph>
-                    <Paragraph color={textColor}>{publishedAt}</Paragraph>
+                    <Paragraph textColor={textColor}>
+                      {viewCount} views
+                    </Paragraph>
+                    <Paragraph textColor={textColor}>{publishedAt}</Paragraph>
                   </ViewsAndDateContainer>
                 </VideoCard>
               </ChannelDetails>

@@ -68,8 +68,11 @@ class VideoItemDetails extends Component {
     const apiURL = `https://apis.ccbp.in/videos/${id}`
     const options = {
       method: 'GET',
-      Authorization: `Bearer ${jwtToken}`,
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
     }
+
     const response = await fetch(apiURL, options)
     const data = await response.json()
     const updatedData = data.video_details.map(eachItem => ({
@@ -77,7 +80,6 @@ class VideoItemDetails extends Component {
       title: eachItem.title,
       videoURL: eachItem.video_url,
       thumbnailURL: eachItem.thumbnail_url,
-
       channel: {
         name: eachItem.channel.name,
         profileImageURL: eachItem.channel.profile_image_url,
@@ -100,7 +102,9 @@ class VideoItemDetails extends Component {
     }
   }
 
-  renderFailureView = () => <FailureView />
+  renderFailureView = () => (
+    <FailureView retryOption={this.getVideoDetailsData} />
+  )
 
   renderLoading = () => <LoaderView />
 
@@ -119,7 +123,7 @@ class VideoItemDetails extends Component {
           description,
         } = videoDetails
         const {name, profileImageURL, subscriberCount} = channel
-        const {addToSaveVideos, removeSaveVideos} = value
+        const {addToSaveVideos, removeSaveVideos, isDarkTheme} = value
 
         const addOrRemoveItem = () => {
           if (isVideoSaved === true) {
@@ -153,8 +157,10 @@ class VideoItemDetails extends Component {
         const likeClass = isLiked ? '#3b82f6' : '#616e7c'
         const dislikeClass = isDisliked ? '#3b82f6' : '#616e7c'
 
-        const likeIcon = isLiked ? <AiFillLike /> : <AiOutlineLike />
+        const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+        const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
+        const likeIcon = isLiked ? <AiFillLike /> : <AiOutlineLike />
         const dislikeIcon = isDisliked ? (
           <AiFillDislike />
         ) : (
@@ -162,26 +168,26 @@ class VideoItemDetails extends Component {
         )
 
         return (
-          <VideoInfoContainer>
+          <VideoInfoContainer bgColor={bgColor}>
             <ImageVideo src={videoURL} alt={thumbnailURL} />
 
-            <VideoInfoCard>
-              <Heading>{title}</Heading>
+            <VideoInfoCard bgColor={bgColor}>
+              <Heading textColor={textColor}>{title}</Heading>
 
-              <ViewsAndLikesCard>
-                <ViewsCard>
-                  <Paragraph>{viewCount}</Paragraph>
-                  <Paragraph>{publishedAt}</Paragraph>
+              <ViewsAndLikesCard bgColor={bgColor}>
+                <ViewsCard bgColor={bgColor}>
+                  <Paragraph textColor={textColor}>{viewCount}</Paragraph>
+                  <Paragraph textColor={textColor}>{publishedAt}</Paragraph>
                 </ViewsCard>
 
-                <LikesCard>
+                <LikesCard bgColor={bgColor}>
                   <IconButton
                     type="button"
                     color={likeClass}
                     onClick={onClickLikeButton}
                   >
                     {likeIcon}
-                    <Paragraph>Like</Paragraph>
+                    <Paragraph textColor={textColor}>Like</Paragraph>
                   </IconButton>
 
                   <IconButton
@@ -190,7 +196,7 @@ class VideoItemDetails extends Component {
                     onClick={onClickDislikeButton}
                   >
                     {dislikeIcon}
-                    <Paragraph>Dislike</Paragraph>
+                    <Paragraph textColor={textColor}>Dislike</Paragraph>
                   </IconButton>
 
                   <IconButton
@@ -207,13 +213,15 @@ class VideoItemDetails extends Component {
 
                 <HorizontalLine />
 
-                <ChannelLogoAndDetailsContainer>
+                <ChannelLogoAndDetailsContainer bgColor={bgColor}>
                   <Image src={profileImageURL} alt={name} />
 
-                  <ChannelCard>
-                    <Heading>{name}</Heading>
-                    <Paragraph>{subscriberCount}</Paragraph>
-                    <Paragraph>{description}</Paragraph>
+                  <ChannelCard bgColor={bgColor}>
+                    <Heading textColor={textColor}>{name}</Heading>
+                    <Paragraph textColor={textColor}>
+                      {subscriberCount}
+                    </Paragraph>
+                    <Paragraph textColor={textColor}>{description}</Paragraph>
                   </ChannelCard>
                 </ChannelLogoAndDetailsContainer>
               </ViewsAndLikesCard>
@@ -241,13 +249,24 @@ class VideoItemDetails extends Component {
 
   render() {
     return (
-      <>
-        <Header />
-        <VideoItemDetailsContainer>
-          <LeftColumn />
-          <CardContainer>{this.renderDetailedData()}</CardContainer>
-        </VideoItemDetailsContainer>
-      </>
+      <ThemeContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+
+          return (
+            <>
+              <Header />
+              <VideoItemDetailsContainer bgColor={bgColor}>
+                <LeftColumn />
+                <CardContainer bgColor={bgColor}>
+                  {this.renderDetailedData()}
+                </CardContainer>
+              </VideoItemDetailsContainer>
+            </>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   }
 }

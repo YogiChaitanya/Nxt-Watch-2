@@ -15,6 +15,7 @@ import {
   IconAndHeadingCard,
   UlElement,
   Heading,
+  Heading2,
 } from './styledComponents'
 
 const SavedVideos = () => (
@@ -23,15 +24,16 @@ const SavedVideos = () => (
       const {savedVideos, isDarkTheme} = value
       const bgColor = isDarkTheme ? '#000000' : '#ffffff'
       const textColor = isDarkTheme ? '#ffffff' : '#000000'
+
       console.log(savedVideos)
       const listOfSavedVideos = savedVideos.length === 0
 
       return (
         <>
           <Header />
-          <SavedVideosContainer data-testid="savedVideos">
+          <SavedVideosContainer data-testid="savedVideos" bgColor={bgColor}>
             <LeftColumn />
-            <CardContainer>
+            <CardContainer bgColor={bgColor}>
               {listOfSavedVideos ? (
                 <NoSavedVideos bgColor={bgColor}>
                   <Image
@@ -46,8 +48,8 @@ const SavedVideos = () => (
               ) : (
                 <SavedVideosCard bgColor={bgColor}>
                   <IconAndHeadingCard bgColor={bgColor}>
-                    <AiFillFire />
-                    <Heading textColor={textColor}>Trending</Heading>
+                    <AiFillFire size={40} color="#ff0b37" />
+                    <Heading2 textColor={textColor}>Trending</Heading2>
                   </IconAndHeadingCard>
                   <UlElement bgColor={bgColor}>
                     {savedVideos.map(eachVideo => (

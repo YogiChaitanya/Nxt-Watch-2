@@ -12,6 +12,7 @@ import ThemeContext from '../../context/ThemeContext'
 
 import {
   GamingContainer,
+  CardContainer,
   IconAndHeadingCard,
   Heading,
   UlElement,
@@ -70,7 +71,7 @@ class Gaming extends Component {
 
   renderLoader = () => <LoaderView />
 
-  renderFailureView = () => <FailureView />
+  renderFailureView = () => <FailureView retryOption={this.getVideosData} />
 
   renderSuccessView = () => (
     <ThemeContext.Consumer>
@@ -117,11 +118,13 @@ class Gaming extends Component {
               <Header />
               <GamingContainer data-testid="gaming" bgColor={bgColor}>
                 <LeftColumn />
-                <IconAndHeadingCard bgColor={bgColor}>
-                  <SiYoutubegaming />
-                  <Heading textColor={textColor}>Gaming</Heading>
-                </IconAndHeadingCard>
-                {this.renderGameData()}
+                <CardContainer bgColor={bgColor}>
+                  <IconAndHeadingCard bgColor={bgColor}>
+                    <SiYoutubegaming size={40} color="#ff0b37" />
+                    <Heading textColor={textColor}>Gaming</Heading>
+                  </IconAndHeadingCard>
+                  {this.renderGameData()}
+                </CardContainer>
               </GamingContainer>
             </>
           )

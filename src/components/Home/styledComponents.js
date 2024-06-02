@@ -3,12 +3,14 @@ import styled from 'styled-components'
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: #ebebeb;
   min-height: 90vh;
+  background-color: ${props => props.bgColor};
 `
 
-export const HomeCard = styled.div`
+export const CardContainer = styled.div`
+  padding: 10px;
   width: 80%;
+  background-color: ${props => props.bgColor};
 `
 
 export const Image = styled.img`
@@ -23,16 +25,16 @@ export const Paragraph = styled.p`
 `
 
 export const Button = styled.button`
-  color: #181818;
+  color: ${props => (props.retryButton ? '#ffffff' : '#181818')};
   font-size: 16px;
   font-weight: normal;
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
   height: 40px;
-  background-size: transparent;
+  background-color: ${props => (props.retryButton ? '#4f46e5' : 'transparent')};
   cursor: pointer;
-  border: 1px solid #181818;
+  border: 1px solid ${props => (props.retryButton ? '#4f46e5' : '#181818')};
   outline: none;
 `
 
@@ -40,13 +42,16 @@ export const PremiumCard = styled.div`
   padding: 30px;
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   height: 30vh;
 `
 
 export const SearchBox = styled.div`
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 30px;
   margin: 10px;
 `
 
@@ -55,11 +60,12 @@ export const SearchInput = styled.input`
   font-size: 16px;
   font-family: Roboto;
   padding-left: 50px;
+  width: 40%;
   border: 1px solid #616e7c;
-  width: 250px;
+  outline: none;
 `
 
-export const BoxSearchIcon = styled.div`
+export const BoxSearchIcon = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,30 +80,12 @@ export const UlElement = styled.ul`
   flex-wrap: wrap;
 `
 
-export const FailureContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-export const FailedImage = styled.img`
-  width: 40%;
-  margin: 30px;
-`
-
 export const Heading = styled.h1`
   color: #1e293b;
-  font-size: 50px;
+  font-size: 35px;
   font-family: Roboto;
   font-weight: normal;
-`
-
-export const LoaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-left: 50px;
 `
 
 export const NoSearchResultsFound = styled.div`
@@ -112,4 +100,7 @@ export const PremimumDetails = styled.div``
 export const CloseButton = styled.button`
   height: 15px;
   width: 15px;
+  background-color: transparent;
+  border: none;
+  outline: none;
 `

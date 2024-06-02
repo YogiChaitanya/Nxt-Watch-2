@@ -5,13 +5,14 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
   min-height: 100vh;
+  background-color: ${props => props.bgColor};
 `
 
 export const FormEl = styled.form`
   padding: 40px;
-  background-color: #f8fafc;
+  background-color: ${props =>
+    props.bgColor === true ? '#0f0f0f' : '#f8fafc'};
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -23,8 +24,8 @@ export const Image = styled.img`
   margin: 50px;
 `
 
-export const Label = styled.div`
-  color: #7e858e;
+export const Label = styled.label`
+  color: ${props => props.textColor};
   font-size: 16px;
   font-family: Roboto;
   font-weight: normal;
@@ -38,6 +39,7 @@ export const InputField = styled.input`
   font-size: 16px;
   padding-left: 30px;
   height: 40px;
+  background-color: transparent;
   border: 1px solid #94a3b8;
   border-radius: 6px;
   outline: none;
@@ -48,6 +50,7 @@ export const CSPContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: ${props => props.bgColor};
   margin-bottom: 30px;
 `
 
@@ -58,7 +61,7 @@ export const CheckBox = styled.input`
 `
 
 export const Label2 = styled.label`
-  color: #1e293b;
+  color: ${props => props.textColor};
   font-family: Roboto;
   font-size: 14px;
 `
