@@ -12,7 +12,7 @@ const LoaderView = () => (
 
       return (
         <LoaderContainer data-testid="loader" bgColor={bgColor}>
-          <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+          <Loader type="ThreeDots" color="#3b82f6" height="50" width="50" />
         </LoaderContainer>
       )
     }}

@@ -20,7 +20,7 @@ const NotFound = () => (
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
 
       const textColor = isDarkTheme ? '#ffffff' : '#000000'
-      const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+      const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
       return (
         <>

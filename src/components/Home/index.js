@@ -47,7 +47,7 @@ class Home extends Component {
   }
 
   onCloseBanner = () => {
-    this.setState({display: 'none'}, this.renderPremiumCard)
+    this.setState({display: 'none'})
   }
 
   renderPremiumCard = () => {
@@ -62,7 +62,9 @@ class Home extends Component {
               alt="nxt watch logo"
             />
             <Paragraph>Buy Nxt Watch Premium prepaid plans with UPI</Paragraph>
-            <Button backgroundColor="transparent">GET IT NOW</Button>
+            <Button type="button" backgroundColor="transparent">
+              GET IT NOW
+            </Button>
           </PremimumDetails>
 
           <CloseButton
@@ -81,6 +83,7 @@ class Home extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
+
     const jwtToken = Cookies.get('jwt_token')
     const {searchInput} = this.state
     const apiUrl = `https://apis.ccbp.in/videos/all?search=${searchInput}`
@@ -92,7 +95,6 @@ class Home extends Component {
     }
     const response = await fetch(apiUrl, options)
     const videosData = await response.json()
-    console.log(videosData)
 
     const updatedData = videosData.videos.map(eachItem => ({
       id: eachItem.id,
@@ -111,7 +113,8 @@ class Home extends Component {
         apiStatus: apiStatusConstants.success,
         searchedVideos: updatedData,
       })
-    } else {
+    }
+    if (response.status === 404) {
       this.setState({
         apiStatus: apiStatusConstants.failure,
       })
@@ -122,9 +125,13 @@ class Home extends Component {
     this.setState({searchInput: event.target.value})
   }
 
+  retryOption = () => {
+    this.setState({searchInput: ''}, this.getVideosData)
+  }
+
   renderLoader = () => <LoaderView />
 
-  renderFailureView = () => <FailureView retryOption={this.getVideosData} />
+  renderFailureView = () => <FailureView retryOption={this.retryOption} />
 
   renderSuccessView = () => {
     const {searchedVideos, searchInput} = this.state
@@ -171,7 +178,7 @@ class Home extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const bgColor = isDarkTheme ? '#181818' : '#ffffff'
 
           return (
             <>
@@ -187,7 +194,7 @@ class Home extends Component {
                       onChange={this.onChangeSearch}
                       placeholder="search"
                     />
-                    <BoxSearchIcon type="button" data-testid="searchButton">
+                    <BoxSearchIcon data-testid="searchButton" type="button">
                       <IoIosSearch aria-label="close" />
                     </BoxSearchIcon>
                   </SearchBox>

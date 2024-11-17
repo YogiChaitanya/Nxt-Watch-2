@@ -42,7 +42,7 @@ export const PremiumCard = styled.div`
   padding: 30px;
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
-  display: flex;
+  display: ${props => props.display};
   flex-direction: row;
   justify-content: space-between;
   height: 30vh;

@@ -41,6 +41,8 @@ export const Button = styled.button`
   background-color: transparent;
   border: 1px solid #3b82f6;
   border-radius: 6px;
+  outline: none;
+  cursor: pointer;
 `
 export const ThemeButton = styled.button`
   background-color: transparent;
@@ -62,7 +64,7 @@ export const AlignColumn = styled.div`
   padding: 30px;
 `
 
-export const ModalDesc = styled.div`
+export const ModalDesc = styled.p`
   color: #f1f1f1;
   text-align: center;
 `
@@ -85,6 +87,8 @@ export const CancelButton = styled.button`
   padding-right: 16px;
   background-color: transparent;
   border: 1px solid #909090;
+  outline: none;
+  cursor: pointer;
 `
 
 export const ConfirmButton = styled.button`
@@ -97,5 +101,7 @@ export const ConfirmButton = styled.button`
   padding-right: 16px;
   background-color: #3b82f6;
   border: none;
+  outline: none;
+  cursor: pointer;
   margin-left: 50px;
 `

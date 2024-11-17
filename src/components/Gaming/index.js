@@ -5,7 +5,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 import Header from '../Header'
 import LoaderView from '../LoaderView'
 import FailureView from '../FailureView'
-import Video from '../Video'
+import GameVideo from '../GameVideo'
 import LeftColumn from '../LeftColumn'
 
 import ThemeContext from '../../context/ThemeContext'
@@ -47,6 +47,7 @@ class Gaming extends Component {
         Authorization: `Bearer ${jwtToken}`,
       },
     }
+
     const response = await fetch(apiUrl, options)
     const gameVideoData = await response.json()
 
@@ -62,28 +63,33 @@ class Gaming extends Component {
         apiStatus: apiStatusConstants.success,
         searchedVideos: updatedData,
       })
-    } else {
+    }
+    if (response.status === 404) {
       this.setState({
         apiStatus: apiStatusConstants.failure,
       })
     }
   }
 
+  retryOption = () => {
+    this.getVideosData()
+  }
+
   renderLoader = () => <LoaderView />
 
-  renderFailureView = () => <FailureView retryOption={this.getVideosData} />
+  renderFailureView = () => <FailureView retryOption={this.retryOption} />
 
   renderSuccessView = () => (
     <ThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
         const {searchedVideos} = this.state
-        const bgColor = isDarkTheme ? '#231f20' : '#0f0f0f'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#ffffff'
 
         return (
           <UlElement bgColor={bgColor}>
             {searchedVideos.map(each => (
-              <Video key={each.id} VideoDetails={each} />
+              <GameVideo key={each.id} detailsOfVideo={each} />
             ))}
           </UlElement>
         )
@@ -110,7 +116,7 @@ class Gaming extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#ffffff'
           const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
           return (

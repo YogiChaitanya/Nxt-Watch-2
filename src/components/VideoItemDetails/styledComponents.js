@@ -8,21 +8,14 @@ export const VideoItemDetailsContainer = styled.div`
 `
 
 export const CardContainer = styled.div`
-  padding: 10px;
+  padding: 20px;
   width: 80%;
   background-color: ${props => props.bgColor};
 `
 
 export const VideoInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   margin-bottom: 50px;
   background-color: ${props => props.bgColor};
-`
-
-export const ImageVideo = styled.img`
-  width: 90%;
-  height: 50vh;
 `
 
 export const VideoInfoCard = styled.div`
@@ -30,19 +23,13 @@ export const VideoInfoCard = styled.div`
   background-color: ${props => props.bgColor};
 `
 
-export const Heading = styled.h1`
-  color: ${props => props.textColor};
-  font-size: 40px;
-  font-weight: normal;
-  font-family: Roboto;
-`
-
 export const ViewsAndLikesCard = styled.div`
-  color: ${props => props.textColor};
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: ${props => props.bgColor};
+  margin-bottom: 8px;
 `
 
 export const ViewsCard = styled.div`
@@ -50,14 +37,25 @@ export const ViewsCard = styled.div`
   flex-direction: row;
   background-color: ${props => props.bgColor};
 `
-
+export const Paragraph3 = styled.p`
+  color: ${props => props.textColor};
+  font-size: 25px;
+  font-weight: normal;
+  font-family: Roboto;
+`
 export const Paragraph = styled.p`
   color: ${props => props.textColor};
   font-size: 20px;
   font-weight: normal;
   font-family: Roboto;
 `
-
+export const Paragraph2 = styled.p`
+  color: ${props => props.textColor};
+  font-size: 20px;
+  font-weight: normal;
+  font-family: Roboto;
+  margin-left: 50px;
+`
 export const LikesCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -71,10 +69,10 @@ export const ChannelLogoAndDetailsContainer = styled.div`
 `
 
 export const Image = styled.img`
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
-  margin-right: 10px;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  margin-right: 20px;
 `
 
 export const ChannelCard = styled.div`
@@ -102,6 +100,16 @@ export const HorizontalLine = styled.hr`
 `
 
 export const IconButton = styled.button`
-  height: 20px;
-  width: 20px;
+  width: 80px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+`
+
+export const ParagraphLDS = styled.p`
+  color: ${props => props.color}
+  font-size: 13px;
+  font-family: Roboto;
+  font-weight: normal;
 `

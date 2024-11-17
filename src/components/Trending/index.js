@@ -67,7 +67,9 @@ class Trending extends Component {
         apiStatus: apiStatusConstants.success,
         searchedVideos: updatedData,
       })
-    } else {
+    }
+
+    if (response.status === 404) {
       this.setState({
         apiStatus: apiStatusConstants.failure,
       })
@@ -86,7 +88,11 @@ class Trending extends Component {
     )
   }
 
-  renderFailureView = () => <FailureView retryOption={this.getVideosData} />
+  retryOption = () => {
+    this.getVideosData()
+  }
+
+  renderFailureView = () => <FailureView retryOption={this.retryOption} />
 
   renderLoader = () => <LoaderView />
 
@@ -110,13 +116,13 @@ class Trending extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
           const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
           return (
             <>
               <Header />
-              <TrendingContainer bgColor={bgColor}>
+              <TrendingContainer data-testid="trending" bgColor={bgColor}>
                 <LeftColumn />
                 <CardContainer bgColor={bgColor}>
                   <IconAndHeadingCard bgColor={bgColor}>

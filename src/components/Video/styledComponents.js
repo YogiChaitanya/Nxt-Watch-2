@@ -1,11 +1,11 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
-export const Link = styled.link`
+export const NavLink = styled(Link)`
   text-decoration: none;
 `
 
 export const VideoContainer = styled.div`
-  text-decoration: none;
   width: 250px;
   background-color: ${props => props.bgColor};
   margin: 10px;
@@ -39,7 +39,6 @@ export const Heading = styled.p`
   font-size: 16px;
   font-weight: normal;
   font-family: Roboto;
-  text-decoration: none;
 `
 
 export const Paragraph = styled.p`
@@ -47,7 +46,6 @@ export const Paragraph = styled.p`
   font-size: 12px;
   font-weight: normal;
   font-family: Roboto;
-  text-decoration: none;
 `
 
 export const ViewsAndDateContainer = styled.div`

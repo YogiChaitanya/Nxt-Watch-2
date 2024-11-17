@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 export const LeftColumnContainer = styled.div`
@@ -16,16 +17,24 @@ export const TabItemsContainer = styled.div`
   margin-left: 5px;
 `
 
-export const TabItem = styled.button`
+export const NavLink = styled(Link)`
   text-decoration: none;
-  height: 40px;
+`
+
+export const TabItem = styled.button`
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
   background-color: ${props => props.isActive};
   border: none;
   border-radius: 4px;
 `
 
-export const Link = styled.link`
-  text-decoration: none;
+export const TabName = styled.p`
+  color: ${props => props.textColor};
+  margin-left: 20px;
 `
 
 export const ContactUsContainer = styled.div`

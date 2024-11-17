@@ -38,7 +38,7 @@ const Header = props => {
           onChangeTheme()
         }
 
-        const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#ffffff'
         const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
         const websiteLogo = isDarkTheme
@@ -88,7 +88,7 @@ const Header = props => {
                   {close => (
                     <ModalContainer>
                       <AlignColumn>
-                        <ModalDesc>Are you sure, you want to logout?</ModalDesc>
+                        <ModalDesc>Are you sure, you want to logout</ModalDesc>
                         <AlignRow>
                           <CancelButton
                             type="button"

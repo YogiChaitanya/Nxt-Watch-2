@@ -6,4 +6,5 @@ export const LoaderContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${props => props.bgColor};
+  min-height: 90vh;
 `

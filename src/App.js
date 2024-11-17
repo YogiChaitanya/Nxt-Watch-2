@@ -37,15 +37,15 @@ class App extends Component {
     this.setState(prevState => ({isDarkTheme: !prevState.isDarkTheme}))
   }
 
-  addToSaveVideos = videoDetails => {
+  addToSaveVideos = detailsOfVideo => {
     const {savedVideos} = this.state
     const videoObject = savedVideos.find(
-      eachVideo => eachVideo.id === videoDetails.id,
+      eachVideo => eachVideo.id === detailsOfVideo.id,
     )
 
     if (videoObject) {
       this.setState(previousState => ({
-        savedVideos: [...previousState.savedVideos],
+        savedVideos: [...previousState.savedVideos, detailsOfVideo],
       }))
     }
   }

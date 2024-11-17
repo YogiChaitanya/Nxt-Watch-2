@@ -3,16 +3,16 @@ import styled from 'styled-components'
 export const NotFoundContainer = styled.div`
   display: flex;
   flex-direction: row;
-  min-height: 90vh;
   background-color: ${props => props.bgColor};
+  min-height: 90vh;
 `
 
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
   background-color: ${props => props.bgColor};
+  width: 80%;
 `
 export const Image = styled.img`
   width: 40%;

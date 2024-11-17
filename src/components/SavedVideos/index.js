@@ -22,11 +22,12 @@ const SavedVideos = () => (
   <ThemeContext.Consumer>
     {value => {
       const {savedVideos, isDarkTheme} = value
-      const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+
+      const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
       const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
-      console.log(savedVideos)
       const listOfSavedVideos = savedVideos.length === 0
+      console.log(listOfSavedVideos)
 
       return (
         <>
@@ -51,9 +52,10 @@ const SavedVideos = () => (
                     <AiFillFire size={40} color="#ff0b37" />
                     <Heading2 textColor={textColor}>Trending</Heading2>
                   </IconAndHeadingCard>
+
                   <UlElement bgColor={bgColor}>
                     {savedVideos.map(eachVideo => (
-                      <Video key={eachVideo.id} VideoDetails={eachVideo} />
+                      <Video key={eachVideo.id} detailsOfVideo={eachVideo} />
                     ))}
                   </UlElement>
                 </SavedVideosCard>

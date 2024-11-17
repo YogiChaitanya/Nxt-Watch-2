@@ -11,6 +11,7 @@ In this assignment let's build an **Nxt Watch** by applying the concepts we have
 </div>
 <br/>
 
+
 **Failure View** <br/>
 
 <div style="text-align: center;">

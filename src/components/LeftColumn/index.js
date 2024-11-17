@@ -1,7 +1,6 @@
-import {Link} from 'react-router-dom'
 import {AiFillHome, AiFillFire} from 'react-icons/ai'
 import {SiYoutubegaming} from 'react-icons/si'
-import {MdPlaylistAdd} from 'react-icons/md'
+import {GiSaveArrow} from 'react-icons/gi'
 
 import ThemeContext from '../../context/ThemeContext'
 
@@ -14,6 +13,8 @@ import {
   Paragraph,
   TabItemsContainer,
   TabItem,
+  TabName,
+  NavLink,
 } from './styledComponents'
 
 const LeftColumn = () => (
@@ -38,64 +39,64 @@ const LeftColumn = () => (
       }
 
       const textColor = isDarkTheme ? '#ffffff' : '#000000'
-      const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+      const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
       return (
         <LeftColumnContainer bgColor={bgColor}>
           <TabItemsContainer bgColor={bgColor}>
-            <TabItem
-              onClick={onClickHomeTabItem}
-              isActive={activeTab === 'HOME' ? '#e2e8f0' : 'transparent'}
-            >
-              <Link to="/" textColor={textColor}>
+            <NavLink to="/" textColor={textColor}>
+              <TabItem
+                onClick={onClickHomeTabItem}
+                isActive={activeTab === 'HOME' ? '#e2e8f0' : 'transparent'}
+              >
                 <AiFillHome
                   size={20}
                   color={activeTab === 'HOME' ? '#ff0b37' : 'none'}
                 />
-                Home
-              </Link>
-            </TabItem>
+                <TabName textColor={textColor}>Home</TabName>
+              </TabItem>
+            </NavLink>
 
-            <TabItem
-              onClick={onClickTrendingTabItem}
-              isActive={activeTab === 'TRENDING' ? '#e2e8f0' : 'transparent'}
-            >
-              <Link to="/trending" textColor={textColor}>
+            <NavLink to="/trending" textColor={textColor}>
+              <TabItem
+                onClick={onClickTrendingTabItem}
+                isActive={activeTab === 'TRENDING' ? '#e2e8f0' : 'transparent'}
+              >
                 <AiFillFire
                   size={20}
                   color={activeTab === 'TRENDING' ? '#ff0b37' : 'none'}
                 />
-                Trending
-              </Link>
-            </TabItem>
+                <TabName textColor={textColor}>Trending</TabName>
+              </TabItem>
+            </NavLink>
 
-            <TabItem
-              onClick={onClickGamingTabItem}
-              isActive={activeTab === 'GAMING' ? '#e2e8f0' : 'transparent'}
-            >
-              <Link to="/gaming" textColor={textColor}>
+            <NavLink to="/gaming" textColor={textColor}>
+              <TabItem
+                onClick={onClickGamingTabItem}
+                isActive={activeTab === 'GAMING' ? '#e2e8f0' : 'transparent'}
+              >
                 <SiYoutubegaming
                   size={20}
                   color={activeTab === 'GAMING' ? '#ff0b37' : 'none'}
                 />
-                Gaming
-              </Link>
-            </TabItem>
+                <TabName textColor={textColor}>Gaming</TabName>
+              </TabItem>
+            </NavLink>
 
-            <TabItem
-              onClick={onClickSavedVideosTabItem}
-              isActive={
-                activeTab === 'SAVED VIDEOS' ? '#e2e8f0' : 'transparent'
-              }
-            >
-              <Link to="/saved-videos" textColor={textColor}>
-                <MdPlaylistAdd
+            <NavLink to="/saved-videos" textColor={textColor}>
+              <TabItem
+                onClick={onClickSavedVideosTabItem}
+                isActive={
+                  activeTab === 'SAVED VIDEOS' ? '#e2e8f0' : 'transparent'
+                }
+              >
+                <GiSaveArrow
                   size={20}
                   color={activeTab === 'SAVED VIDEOS' ? '#ff0b37' : 'none'}
                 />
-                Saved videos
-              </Link>
-            </TabItem>
+                <TabName textColor={textColor}>Saved Videos</TabName>
+              </TabItem>
+            </NavLink>
           </TabItemsContainer>
 
           <ContactUsContainer bgColor={bgColor}>

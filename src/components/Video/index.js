@@ -1,7 +1,7 @@
-import {Link} from 'react-router-dom'
 import ThemeContext from '../../context/ThemeContext'
 
 import {
+  NavLink,
   VideoContainer,
   Image,
   VideoCard,
@@ -28,11 +28,11 @@ const Video = props => {
     <ThemeContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-        const bgColor = isDarkTheme ? '#000000' : '#ffffff'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
         const textColor = isDarkTheme ? '#ffffff' : '#000000'
 
         return (
-          <Link to={`/videos/${id}`}>
+          <NavLink to={`/videos/${id}`}>
             <VideoContainer bgColor={bgColor}>
               <Image src={thumbnailURL} alt="video thumbnail" />
               <ChannelDetails bgColor={bgColor}>
@@ -49,7 +49,7 @@ const Video = props => {
                 </VideoCard>
               </ChannelDetails>
             </VideoContainer>
-          </Link>
+          </NavLink>
         )
       }}
     </ThemeContext.Consumer>
